@@ -1,30 +1,38 @@
 package net.adeptropolis.sentiments;
 
+import com.google.common.collect.ImmutableMap;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 
-import java.util.Iterator;
 import java.util.Properties;
+import java.util.stream.Stream;
 
 public class CoreNLP {
 
   private static final StanfordCoreNLP pipeline = getPipeline();
-  private static final String LOCAL_THREADS = "36";
+  private static final String LOCAL_THREADS = "8";
 
-  public static Iterator<SentenceAnnotation> annotateSentenceSentiments(String text) {
+  private static final ImmutableMap<String, Integer> scalars = ImmutableMap.of(
+          "very negative", -2,
+          "negative", -1,
+          "neutral", 0,
+          "positive", 1,
+          "very positive", 2
+  );
+
+  public static Stream<SentenceAnnotation> annotateSentenceSentiments(String text) {
     return pipeline.process(text)
             .get(CoreAnnotations.SentencesAnnotation.class)
             .stream()
-            .map(CoreNLP::getString)
-            .iterator();
+            .map(CoreNLP::getString);
   }
 
   private static SentenceAnnotation getString(CoreMap sentence) {
     return new SentenceAnnotation(
             sentence.get(CoreAnnotations.TextAnnotation.class),
-            sentence.get(SentimentCoreAnnotations.SentimentClass.class)
+            scalars.get(sentence.get(SentimentCoreAnnotations.SentimentClass.class).toLowerCase())
     );
   }
 

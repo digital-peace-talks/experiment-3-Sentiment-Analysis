@@ -1,4 +1,4 @@
-package net.adeptropolis.sentiments;
+package net.adeptropolis.sentiments.service;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

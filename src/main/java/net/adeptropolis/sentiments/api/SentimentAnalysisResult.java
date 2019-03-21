@@ -1,7 +1,7 @@
 package net.adeptropolis.sentiments.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import net.adeptropolis.sentiments.SentenceAnnotation;
+import net.adeptropolis.sentiments.service.SentenceAnnotation;
 
 import java.util.List;
 

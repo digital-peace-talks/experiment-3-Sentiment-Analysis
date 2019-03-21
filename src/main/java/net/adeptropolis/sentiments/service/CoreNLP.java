@@ -1,4 +1,4 @@
-package net.adeptropolis.sentiments;
+package net.adeptropolis.sentiments.service;
 
 import com.google.common.collect.ImmutableMap;
 import edu.stanford.nlp.ling.CoreAnnotations;

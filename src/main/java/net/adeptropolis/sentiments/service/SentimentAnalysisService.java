@@ -1,7 +1,5 @@
 package net.adeptropolis.sentiments.service;
 
-import net.adeptropolis.sentiments.CoreNLP;
-import net.adeptropolis.sentiments.SentenceAnnotation;
 import net.adeptropolis.sentiments.api.SentimentAnalysisResult;
 import org.springframework.stereotype.Service;
 

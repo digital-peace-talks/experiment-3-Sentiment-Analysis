@@ -1,4 +1,4 @@
-CoreNLP RNTN Sentiment Analysis web service?
+(completed) Experiment: Sentiment Analysis with CoreNLP RNTN as web service
 ==============
 
 This is a thin wrapper around CoreNLP's RNTN-based sentiment analyzer that
